@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Jan 2025 pada 13.50
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.0.30
+-- Generation Time: Feb 02, 2025 at 01:47 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `form_pemesanan`
+-- Table structure for table `form_pemesanan`
 --
 
 CREATE TABLE `form_pemesanan` (
@@ -43,7 +43,7 @@ CREATE TABLE `form_pemesanan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pesanan`
+-- Table structure for table `pesanan`
 --
 
 CREATE TABLE `pesanan` (
@@ -60,45 +60,77 @@ CREATE TABLE `pesanan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `pesanan`
+-- Dumping data for table `pesanan`
 --
 
 INSERT INTO `pesanan` (`id_pesanan`, `nama_pemesan`, `jenis_kelamin`, `nomor_identitas`, `tipe_kamar`, `harga`, `tanggal_pesan`, `durasi_menginap`, `breakfeast`, `total_bayar`) VALUES
-(18, 'ddede', 'Laki-laki', '7868678676887867', 'Standar', 500000.00, '2024-12-11', 2, 1, 1080000.00),
-(19, '121212', 'Laki-laki', '3232323232323232', 'Executive', 1500000.00, '2025-01-03', 2, 0, 3000000.00),
-(20, 'abdul', 'Laki-laki', '7832748947284798', 'Executive', 1500000.00, '2025-01-12', 2, 1, 3080000.00);
+(22, 'fgfg', 'Laki-laki', '4864685468468468', 'Standar', 500000.00, '2025-01-30', 1, 0, 500000.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` enum('admin','user') NOT NULL DEFAULT 'user'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES
+(1, 'admin', '$2y$10$N9qo8uLOickgx2ZMRZoMyeIjtt7CfE9U/ZJ1zRW/Bm8DTXaErIlxW', 'admin'),
+(10, 'asep', '$2y$10$PZFgf2ib.qOQc1uKQFkHlO6jLFNzZEKxx1dD2vEBGPQO0e39vLBbW', 'user');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `form_pemesanan`
+-- Indexes for table `form_pemesanan`
 --
 ALTER TABLE `form_pemesanan`
   ADD PRIMARY KEY (`id_pesanan`);
 
 --
--- Indeks untuk tabel `pesanan`
+-- Indexes for table `pesanan`
 --
 ALTER TABLE `pesanan`
   ADD PRIMARY KEY (`id_pesanan`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `form_pemesanan`
+-- AUTO_INCREMENT for table `form_pemesanan`
 --
 ALTER TABLE `form_pemesanan`
   MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `pesanan`
+-- AUTO_INCREMENT for table `pesanan`
 --
 ALTER TABLE `pesanan`
-  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_pesanan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
