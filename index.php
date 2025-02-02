@@ -1,3 +1,18 @@
+<?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: login.php"); // Jika belum login, kembali ke login
+    exit;
+}
+
+// Logout functionality
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header("Location: login.php"); // Arahkan ke login setelah logout
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +43,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="hasilpesanan.php">Hasil pesanan</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="?logout=true">Logout</a> <!-- Link untuk logout -->
+                    </li>
                 </ul>
             </div>
         </div>
